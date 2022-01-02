@@ -103,11 +103,27 @@ L1 = ['adam', 'LISA', 'barT']
 L2 = list(map(normalize, L1))
 print(L2)'''
 
-def prod(L):
+'''def prod(L):
     return reduce(lambda x,y:x*y, L)
 
 print('3 * 5 * 7 * 9 =', prod([3, 5, 7, 9]))
 if prod([3, 5, 7, 9]) == 945:
+    print('测试成功!')
+else:
+    print('测试失败!')'''
+
+def convert(ch):
+    return ord(ch)-48
+
+def str2float(s):
+    pos = s.find(".")
+    bigger_than_zero = list(map(convert, s[0:pos]))
+    smaller_than_zero = list(map(convert, s[pos+1:]))
+    return reduce(lambda x,y:10*x+y, bigger_than_zero) + reduce(lambda x,y:10*x+y, smaller_than_zero)*0.1**(len(smaller_than_zero))
+
+
+print('str2float(\'114.514\') =', str2float('114.514'))
+if abs(str2float('114.514') - 114.514) < 0.00001:
     print('测试成功!')
 else:
     print('测试失败!')
