@@ -112,13 +112,11 @@ if prod([3, 5, 7, 9]) == 945:
 else:
     print('测试失败!')'''
 
-def convert(ch):
-    return ord(ch)-48
 
 def str2float(s):
     pos = s.find(".")
-    bigger_than_zero = list(map(convert, s[0:pos]))
-    smaller_than_zero = list(map(convert, s[pos+1:]))
+    bigger_than_zero = list(map(lambda ch: ord(ch)-48, s[0:pos]))
+    smaller_than_zero = list(map(lambda ch: ord(ch)-48, s[pos+1:]))
     return reduce(lambda x,y:10*x+y, bigger_than_zero) + reduce(lambda x,y:10*x+y, smaller_than_zero)*0.1**(len(smaller_than_zero))
 
 
