@@ -87,3 +87,16 @@ if results == [
     print('测试通过!')
 else:
     print('测试失败!')'''
+
+def normalize(name):
+    char_ord = list(map(ord, name))
+    if char_ord[0] > 96:
+        char_ord[0] -= 32
+    char_ch = chr(char_ord[0])
+    for ch in [x + 32 if x < 97 else x for x in char_ord[1:]]:
+        char_ch += chr(ch)
+    return char_ch
+
+L1 = ['adam', 'LISA', 'barT']
+L2 = list(map(normalize, L1))
+print(L2)
